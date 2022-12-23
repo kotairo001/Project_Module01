@@ -137,7 +137,7 @@ signInBtn.addEventListener("click", () => {
         }
       }
     }
-    window.location.href = "./index.html";
+    window.location.href = "index.html";
     // localStorage.removeItem("listFavourite");
     // localStorage.removeItem("listCart");
   }
