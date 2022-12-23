@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(/img/background.webp);
+    color: whitesmoke;
+    line-height: 2;
+    font-size: 22px;
+
+}
+.container {
+    width: 30%;
+    height: 470px;
+    margin: auto;
+    padding: auto;
+    margin-top: 80px;
+    background-color: rgb(170,135,142);
+    padding: 15px;
+    font-weight: 500;
+    
+}
+h2 {
+    padding: 0;
+    margin: 0;
+}
+#email {
+    width: 100%;
+    height: 40px;
+    /* outline: none; */
+}
+#question {
+    width: 100%;
+    height: 40px;
+}
+.passwordContent {
+    position: absolute;
+    top: 22%;
+    width: 28%;
+    display: none;
+}
+#nPassword {
+    width: 100%;
+    height: 40px;
+}
+#cfNPassword{
+    width: 100%;
+    height: 40px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.btn {
+    /* margin: auto; */
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 10px; */
+    margin-top: 35px;
+}
+button {
+    width: 40%;
+    font-size: 18px;
+    margin-left: 130px;
+    height: 40px;
+    font-family: 'Poppins', sans-serif;
+
+}
+span {
+    font-size: 15px;
+}
+.forgotPsw a{
+    color: white;
+    font-size: 15px;
+}
+.forgotPsw a:hover {
+    text-decoration: underline;
+}

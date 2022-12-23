@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,200;1,300;1,400;1,600;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <script src="https://kit.fontawesome.com/7a3d5b703f.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="/CSS/register.css" />
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+  </head>
+  <body>
+    <div id="container" class="container">
+      <h2>Join Us</h2>
+      <label for="email">Email:</label><br />
+      <input
+        type="email"
+        name="email"
+        id="email"
+        required
+        placeholder="abc@xyz.com"
+      /><br />
+      <div id="alert"></div>
+      <label for="psw">Password:</label><br />
+      <div class="container_password">
+        <input
+          type="password"
+          placeholder="ex: Abcd1234"
+          name="password"
+          id="password"
+          required
+        />
+      </div>
+      <div id="invalidpsw"></div>
+      <input
+        type="checkbox"
+        name=""
+        class="showedPassword"
+        id="showPassword"
+      />
+      <span>Show password </span><br />
+      <label for="cfpsw">Confirm password:</label><br />
+      <div class="container_cfpassword">
+        <input type="password" name="cfpsw" id="cfpassword" required />
+      </div>
+      <div id="cfmessage"></div>
+      <input
+        type="checkbox"
+        name=""
+        class="showedPassword"
+        id="showCfPassword"
+      />
+      <span>Show password </span><br />
+      <p class="question">What your favourite pet?</p>
+      <textarea name="" id="security" placeholder="Write your answer here"></textarea>
+      <input type="button" value="Register" id="summit" />
+    </div>
+  </body>
+  <script src="/JS/register.js"></script>
+</html>

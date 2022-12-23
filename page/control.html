@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,200;1,300;1,400;1,600;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/CSS/control.css" />
+    <script
+      src="https://kit.fontawesome.com/b04df19cee.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" type="image/x-icon" href="/img/logo_tab.png" />
+  </head>
+  <body>
+    <header>
+      <nav id="control__navBar" class="navBar col-12">
+        <div class="navBar--title">
+          <p>Administrator</p>
+        </div>
+        <div class="navBar--homepage">
+          <a href="/index_new.html">
+            <p>To Home-page</p>
+          </a>
+        </div>
+        <div class="navBar--log">
+          <p>Welcome Admin</p>
+          <button id="logOutBtn">Log Out</button>
+        </div>
+      </nav>
+    </header>
+    <section id="menuBar" class="menuBar col-2">
+      <div class="menuBar__catagory">
+        <p>Catagories</p>
+      </div>
+      <div class="menuBar__product" id="productDiv">
+        <p>Product</p>
+      </div>
+      <div class="menuBar__user" id="userDiv">
+        <p>Users</p>
+      </div>
+      <div class="menuBar__invoice">
+        <p>Invoice</p>
+      </div>
+    </section>
+    <section id="menuContent" class="menuContent col-7">
+      <div class="menu__search">
+        <input type="text" name="" id="searchInput" />
+        <button id="searchBtn">Search</button>
+      </div>
+      <div class="menu__catagory"></div>
+      <div class="menu__product" id="menuProduct">
+        <!-- <table>
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th  colspan="2"> Image </th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2">
+                        <img src="" alt="">
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button>Delete</button>
+                        <button>Edit</button>
+                    </td>
+                </tr>
+            </table> -->
+      </div>
+      <div class="menu__user" id="menuUser">
+        <!-- <table>
+                <tr>
+                    <th>No.</th>
+                    <th colspan="2">Email</th>
+                    <th>Password</th>
+                    <th>Security</th>
+                    <th>Permission</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table> -->
+      </div>
+    </section>  
+    <section id="menuCreate" class="menuCreate col-3">
+      <div class="menu__create" id="creatDiv">
+        <div class="create--container" id="creatContainer">
+          <div class="create--text">
+            <p>Name</p>
+            <p>Picture</p>
+            <p>Price</p>
+            <p>Catagory</p>
+          </div>
+          <div class="create--input">
+            <input type="text" name="" id="nameCreate" />
+            <input type="text" name="" id="imgCreate" />
+            <input type="number" name="" id="priceCreate" />
+            <input type="text" name="" id="catagory" />
+          </div>
+        </div>
+        <div class="creat--btn">
+          <button id="addBtn">Add</button>
+          <button id="updateBtn">Update</button>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="/JS/control.js"></script>
+</html>
