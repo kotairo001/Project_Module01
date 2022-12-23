@@ -147,7 +147,7 @@ function checkUser() {
       ) {
         listUser[i].password = password.value;
         localStorage.setItem("listUser",JSON.stringify(listUser))
-        window.location = "/index_new.html"
+        window.location = "../page/Login.html"
       } else {
         alertCfMessage.innerHTML = "Your email or password is wrong";
         alertCfMessage.style.color = "red";
@@ -156,7 +156,7 @@ function checkUser() {
     }
   } else {
     alert("You don't have account yet. Please sign up");
-    window.location = "./register.html";
+    window.location = "../page/Register.html";
   }
 }
 saveChange.addEventListener("click", checkUser);

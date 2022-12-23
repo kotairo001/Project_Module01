@@ -269,7 +269,7 @@ searchBtn.addEventListener("click", searchUser);
 
 let logOutBtn = document.getElementById("logOutBtn");
 logOutBtn.addEventListener("click",()=>{
-  window.location = "./login_control.html";
+  window.location = "../page/login_control.html";
 })
 
 //TODO Show cart

@@ -69,7 +69,7 @@ function checkLogin() {
         email.value == adminAccount[0].email &&
         password.value == adminAccount[0].password
       ) {
-        window.location = "./control.html";
+        window.location.href = "../page/control.html";
       } else {
         warnMessage.innerHTML = "Your email or password is wrong";
         warnMessage.style.color = "red";

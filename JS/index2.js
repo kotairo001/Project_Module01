@@ -56,7 +56,7 @@ signInBtn.addEventListener("click", () => {
 });
 
 signUpBtn.addEventListener("click", function () {
-  window.location.href = "Register.html";
+  window.location.href = "../page/Register.html";
 });
 
 let menuButton = document.getElementById("menuBtn");

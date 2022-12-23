@@ -121,7 +121,7 @@ signInBtn.addEventListener("click", () => {
   console.log("111");
 
   if (signInBtn.innerHTML == "Sign in") {
-    window.location.href = "/page/Login.html";
+    window.location.href = "../page/Login.html";
   }
 });
 
@@ -145,7 +145,7 @@ signInBtn.addEventListener("click", () => {
 
 let signUpBtn = document.getElementById("signUpBtn");
 signUpBtn.addEventListener("click", function () {
-  window.location.href = "Register.html";
+  window.location.href = "../page/Register.html";
 });
 
 // let mainPhoto = document.getElementById("mainPhoto");

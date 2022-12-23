@@ -105,7 +105,7 @@ function checkAll() {
     };
     listUser.push(obj);
     localStorage.setItem("listUser", JSON.stringify(listUser));
-    window.location.href = "Login.html";
+    window.location.href = "../page/Login.html";
   } else if (
     listUser != null &&
     confirmPassword() == true &&
@@ -138,7 +138,7 @@ function checkAll() {
       };
       listUser.push(obj);
       localStorage.setItem("listUser", JSON.stringify(listUser));
-      window.location.href = "Login.html";
+      window.location.href = "../page/Login.html";
     } else {
       message.innerHTML = "Your email has already been registed";
       message.style.color = "red";

@@ -4,23 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Favourite</title>
+    <title>Order</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,200;1,300;1,400;1,600;1,800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/CSS/style1.css" />
-    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <link rel="stylesheet" href="../CSS/style2.css" />
+    <link rel="icon" type="image/x-icon" href="../img/logo.png" />
   </head>
-  <body>
+  <body id="body">
     <header>
       <nav id="navbar">
         <div class="navbar">
           <div class="navbar__logo">
-            <img src="/img/logo.png" alt="" />
-            <a href="./index_new.html">
+            <img src="../img/logo.png" alt="" />
+            <a href="/index.html">
               <p class="navbar__logo--name">The Chubby Bakery</p>
             </a>
           </div>
@@ -47,10 +47,10 @@
             <a class="sidebar__top--number" href="">
               <p>Croissont</p>
             </a>
-            <a class="sidebar__top--number" href="./index1.html">
+            <a class="sidebar__top--number" href="../page/index1.html">
               <p>Your Favourite</p>
             </a>
-            <a class="sidebar__top--number" href="./index2.html">
+            <a class="sidebar__top--number" href="../page/index2.html">
               <p>Your Order</p>
             </a>
             <a class="sidebar__top--number" href="">
@@ -63,12 +63,36 @@
     <main>
       <section id="main__photo">
         <div class="main__photo">
-          <img src="/img/top-ing.jpg" alt="" />
+          <img src="../img/top-ing.jpg" alt="" />
         </div>
       </section>
-      <section id="favourite">
-        <p>Favourite List</p>
-        <div id="favouriteContainer" class="favourite-container">
+      <section id="cartContainer">
+        <div class="cart-detail" id="cartDetail">
+          <!-- <table id="order_list">
+                    <tr>
+                        <th>NO.</th>
+                        <th>Picture</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Option</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <button>+</button>
+                            <button>-</button>
+                            <button>X</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table> -->
         </div>
       </section>
     </main>
@@ -82,19 +106,20 @@
             <li>
               <a href="">
                 <p>Facebook</p>
-                <img src="/img/footer-face.png" alt="" />
+                <img src="../img/footer-face.png" alt="" />
               </a>
             </li>
             <li>
               <a href="">
                 <p>Tiktok</p>
-                <img src="/img/footer-titok.png" alt="" width="30px" />
+                <img src="../img/footer-titok.png" alt="" width="30px" />
               </a>
             </li>
             <li>
               <a href="">
                 <p>Instagram</p>
-                <img src="/img/footer-instagram.png" alt="" width="30px" />
+                <img src="../img/footer-instagram.png" alt="" width="30px" />
+                <!-- <a href=""></a> -->
               </a>
             </li>
           </ul>
@@ -104,13 +129,13 @@
             <li>
               <a href="">
                 <p>support@chubby.com</p>
-                <img src="/img/footer-email.png" alt="" />
+                <img src="../img/footer-email.png" alt="" />
               </a>
             </li>
             <li>
               <a href="">
                 <p>0123456789</p>
-                <img src="/img/footer-phone.png" alt="" />
+                <img src="../img/footer-phone.png" alt="" />
               </a>
             </li>
           </ul>
@@ -121,5 +146,5 @@
       </div>
     </footer>
   </body>
-  <script src="/JS/index1.js"></script>
+  <script src="../JS/index2.js"></script>
 </html>

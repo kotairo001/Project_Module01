@@ -57,7 +57,7 @@ signInBtn.addEventListener("click", () => {
 });
 
 signUpBtn.addEventListener("click", function () {
-  window.location.href = "Register.html";
+  window.location.href = "./Register.html";
 });
 menuButton.addEventListener("click", function () {
   if (menuList.style.display === "none") {

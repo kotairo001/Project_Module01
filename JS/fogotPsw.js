@@ -115,14 +115,11 @@ function checkQuestion() {
         question.value == listUser[i].security
       ) {
         flag = true;
-      } else {
-        flag = false;
-      }
+        console.log(flag);
+        break;
+      } 
     }
-  } else {
-    alert("You don't have account yet. Please sign up");
-    window.location = "./register.html";
-  }
+  } 
   if (flag == true) {
     let emailCheck = [];
     emailCheck.push(email.value);
@@ -172,7 +169,7 @@ function addNewPsw() {
     if(flag) {
       localStorage.setItem("listUser", JSON.stringify(listUser));
       alert("Your password has been updated");
-      window.location = "/Login.html"
+      window.location.href = "../page/Login.html"
     }
   }
 }

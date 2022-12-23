@@ -80,12 +80,12 @@ function checkLogin() {
     }
   } else {
     alert("You don't have account yet. Please sign up");
-    window.location = "./register.html";
+    window.location = "../page/Register.html";
   }
 };
 loginBtn.addEventListener("click",checkLogin);
 
 let registerBtn = document.getElementById("registerBtn");
 registerBtn.addEventListener("click",()=>{
-    window.location = "./register.html";
+    window.location = "../page/Register.html";
 })
