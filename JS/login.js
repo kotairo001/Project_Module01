@@ -71,7 +71,7 @@ function checkLogin() {
         };
         arrLoginAccount.push(loginaccount);
         localStorage.setItem("loginAcount", JSON.stringify(arrLoginAccount));
-        window.location = "/index.html";
+        window.location = "./index.html";
       } else {
         warnMessage.innerHTML = "Your email or password is wrong";
         warnMessage.style.color = "red";

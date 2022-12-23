@@ -52,12 +52,12 @@ signInBtn.addEventListener("click", () => {
         }
       }
     }
-    window.location.href = "./index_new.html";
+    window.location.href = "./index.html";
   }
 });
 
 signUpBtn.addEventListener("click", function () {
-  window.location.href = "./Register.html";
+  window.location.href = "../page/Register.html";
 });
 menuButton.addEventListener("click", function () {
   if (menuList.style.display === "none") {
