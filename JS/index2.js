@@ -93,7 +93,7 @@ let cartDetail = document.getElementById("cartDetail");
 function renderCart(list) {
   if (checkLogin() == true) {
     let data = `
-    <p id="header">Your Order</p>
+    <h2 id="header">Your Order</h2>
     <table id="order_list">
     <tr>
         <th>NO.</th>

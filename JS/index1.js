@@ -1,7 +1,7 @@
 var menuButton = document.getElementById("menuBtn");
 var signInBtn = document.getElementById("signInBtn");
 var signUpBtn = document.getElementById("signUpBtn");
-
+let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
 function checkLogin() {
   let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
   let flag = false;
@@ -68,9 +68,10 @@ menuButton.addEventListener("click", function () {
 });
 
 let favContainer = document.getElementById("favouriteContainer");
-let favList = JSON.parse(localStorage.getItem("listFavourite"));
+let favList = JSON.parse(localStorage.getItem(`listFav${loginAcount[0].email}`));
 function renderFavList(list) {
   let data = `
+  <h2>Favourite List</h2>
     <table id="favourite_list">
         <tr>
             <th>NO.</th>
@@ -92,10 +93,10 @@ function renderFavList(list) {
   data += "</table>";
   favContainer.innerHTML = data;
 }
-// renderFavList(favList);
+renderFavList(favList);
 
 function showFavList() {
-  let favList = JSON.parse(localStorage.getItem("listFavourite"));
+  let favList = JSON.parse(localStorage.getItem(`listFav${loginAcount[0].email}`));
   if (checkLogin() == true && signInBtn.innerHTML == "Log out") {
     renderFavList(favList);
   }
@@ -105,10 +106,10 @@ window.addEventListener("load", showFavList);
 
 function deleteFav(i) {
   favList.splice(i, 1);
-  localStorage.setItem("listFavourite", JSON.stringify(favList));
-  let deleteFavList = JSON.parse(localStorage.getItem("listFavourite"));
+  localStorage.setItem(`listFav${loginAcount[0].email}`, JSON.stringify(favList));
+  let deleteFavList = JSON.parse(localStorage.getItem(`listFav${loginAcount[0].email}`));
   renderFavList(deleteFavList);
   if (deleteFavList.length == 0) {
-    localStorage.removeItem("listFavourite");
+    localStorage.removeItem(`listFav${loginAcount[0].email}`);
   }
 }
