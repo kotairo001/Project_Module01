@@ -55,6 +55,7 @@ email.addEventListener("keyup",checkEmail)
 //new LoginAccount(email.value, password.value, true)
 let loginBtn = document.getElementById("loginBtn")
 function checkLogin() {
+  let flag = false;
   let storage = JSON.parse(localStorage.getItem("listUser"));
   if (storage != null) {
     for (i = 0; i < storage.length; i++) {
@@ -62,6 +63,7 @@ function checkLogin() {
         email.value == storage[i].email &&
         password.value == storage[i].password
       ) {
+        flag = true;
         arrLoginAccount = [];
         let loginaccount = {
           email: email.value,
@@ -72,11 +74,13 @@ function checkLogin() {
         arrLoginAccount.push(loginaccount);
         localStorage.setItem("loginAcount", JSON.stringify(arrLoginAccount));
         window.location = "/index.html";
-      } else {
-        warnMessage.innerHTML = "Your email or password is wrong";
-        warnMessage.style.color = "red";
-        warnMessage.style.fontSize = 15 + "px";
-      }
+        break;
+      } 
+    }
+    if(flag == false) {
+      warnMessage.innerHTML = "Your email or password is wrong";
+      warnMessage.style.color = "red";
+      warnMessage.style.fontSize = 15 + "px";
     }
   } else {
     alert("You don't have account yet. Please sign up");

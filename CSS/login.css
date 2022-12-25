@@ -9,17 +9,21 @@ body {
     color: whitesmoke;
     line-height: 2;
     font-size: 22px;
+    background-repeat: no-repeat;
+    background-size: auto;
 
 }
 .container {
-    width: 30%;
-    height: 430px;
+    width: 80%;
+    height: 100%;
     margin: auto;
     padding: auto;
-    margin-top: 100px;
+    margin-top: 40%;
     background-color: rgb(170,135,142);
     padding: 15px;
     font-weight: 500;
+    font-size: 12px;
+    line-height: 3;
 }
 h2 {
     padding: 0;
@@ -39,7 +43,6 @@ a {
     color: black;
 }
 .btn {
-    /* margin: auto; */
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
@@ -62,4 +65,13 @@ span {
 }
 .forgotPsw a:hover {
     text-decoration: underline;
+}
+@media screen and (min-width: 960px) {
+    .container {
+        width: 40%;
+        margin-top: 10%;
+        font-size: 22px;
+        line-height: 2;
+    }
+
 }

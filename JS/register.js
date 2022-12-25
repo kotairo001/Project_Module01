@@ -100,6 +100,7 @@ function checkAll() {
       email: email.value,
       password: password.value,
       security: security.value,
+      status: false,
       permission: "active",
       id: listUser.length,
     };
@@ -119,6 +120,7 @@ function checkAll() {
       email: email.value,
       password: password.value,
       security: security.value,
+      status: false,
       permission: "active",
       id: listUser.length,
     };
@@ -133,6 +135,7 @@ function checkAll() {
         email: email.value,
         password: password.value,
         security: security.value,
+        status: false,
         permission: "active",
         id: listUser.length,
       };

@@ -10,18 +10,22 @@ body {
     line-height: 2;
     font-size: 22px;
     background-repeat: no-repeat;
-    background-size: cover ;
-
+    background-size: auto;
+    line-height: 2;
+}
+span {
+    font-size: 15px;
 }
 .container {
-    width: 30%;
-    height: 430px;
+    width: 80%;
+    height: 100%;
     margin: auto;
     padding: auto;
-    margin-top: 100px;
+    margin-top: 40%;
     background-color: 	#689872;
     padding: 15px;
     font-weight: 500;
+    font-size: 15px;
 }
 h2 {
     padding: 0;
@@ -41,7 +45,6 @@ a {
     color: black;
 }
 .btn {
-    /* margin: auto; */
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
@@ -55,13 +58,20 @@ a {
     font-family: 'Poppins', sans-serif;
 
 }
-span {
-    font-size: 15px;
-}
+
 .forgotPsw a{
     color: white;
     font-size: 15px;
 }
 .forgotPsw a:hover {
     text-decoration: underline;
+}
+
+@media screen and (min-width: 960px) {
+    .container {
+        width: 50%;
+        margin-top: 10%;
+        font-size: 22px;
+    }
+
 }

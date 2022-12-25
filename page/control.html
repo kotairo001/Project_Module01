@@ -20,7 +20,7 @@
   </head>
   <body>
     <header>
-      <nav id="control__navBar" class="navBar col-12">
+      <nav id="control__navBar" class="navBar">
         <div class="navBar--title">
           <p>Administrator</p>
         </div>
@@ -31,6 +31,8 @@
         </div>
         <div class="navBar--log">
           <p>Welcome Admin</p>
+        </div class="navBar--btn">
+        <div>
           <button id="logOutBtn">Log Out</button>
         </div>
       </nav>
@@ -45,58 +47,10 @@
       <div class="menuBar__user" id="userDiv">
         <p>Users</p>
       </div>
-      <div class="menuBar__invoice">
+      <div class="menuBar__invoice" id="orderDiv">
         <p>Invoice</p>
       </div>
     </section>
-    <section id="menuContent" class="menuContent col-7">
-      <div class="menu__search">
-        <input type="text" name="" id="searchInput" />
-        <button id="searchBtn">Search</button>
-      </div>
-      <div class="menu__catagory"></div>
-      <div class="menu__product" id="menuProduct">
-        <!-- <table>
-                <tr>
-                    <th>No.</th>
-                    <th>Name</th>
-                    <th  colspan="2"> Image </th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td colspan="2">
-                        <img src="" alt="">
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <button>Delete</button>
-                        <button>Edit</button>
-                    </td>
-                </tr>
-            </table> -->
-      </div>
-      <div class="menu__user" id="menuUser">
-        <!-- <table>
-                <tr>
-                    <th>No.</th>
-                    <th colspan="2">Email</th>
-                    <th>Password</th>
-                    <th>Security</th>
-                    <th>Permission</th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td colspan="2"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table> -->
-      </div>
-    </section>  
     <section id="menuCreate" class="menuCreate col-3">
       <div class="menu__create" id="creatDiv">
         <div class="create--container" id="creatContainer">
@@ -117,6 +71,17 @@
           <button id="addBtn">Add</button>
           <button id="updateBtn">Update</button>
         </div>
+      </div>
+    </section>
+    <section id="menuContent" class="menuContent col-7">
+      <div class="menu__search">
+        <input type="text" name="" id="searchInput" />
+        <button id="searchBtn">Search</button>
+      </div>
+      <div class="menu__catagory"></div>
+      <div class="menu__product" id="menuProduct"></div>
+      <div class="menu__user" id="menuUser"></div>
+      <div class="menu__order" id="menuOder">
       </div>
     </section>
   </body>

@@ -9,21 +9,26 @@ body {
     color: whitesmoke;
     line-height: 2;
     font-size: 20px;
-
+    background-repeat: no-repeat;
+    background-size: auto;
 }
 .container {
-    width: 30%;
-    height: 600px;
+    width: 90%;
+    height: 80%;
     margin: auto;
     padding: auto;
-    margin-top: 70px;
+    margin-top: 30%;
     background-color: rgb(170,135,142);
     padding: 15px;
     font-weight: 500;
+    font-size: 10px;
 }
 h2 {
     padding: 0;
     margin: 0;
+}
+span {
+    font-size: 15px;
 }
 #email {
     width: 100%;
@@ -57,7 +62,7 @@ a {
 .btn button {
     /* gap: ; */
     width: 40%;
-    font-size: 15px;
+    font-size: 10px;
     margin-left: 10px;
     height: 30px;
     font-family: 'Poppins', sans-serif;
@@ -67,6 +72,16 @@ a {
     width: 97%;
     
 }
-span {
-    font-size: 15px;
+
+@media screen and (min-width: 960px) {
+    .container {
+        width: 40%;
+        margin-top: 2%;
+        font-size: 22px;
+        line-height: 2;
+    }
+    .btn button {
+        font-size: 15px;
+    }
+
 }

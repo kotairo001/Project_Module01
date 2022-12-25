@@ -76,9 +76,12 @@ function caculateTotal() {
   let listCart = JSON.parse(
     localStorage.getItem(`listCart${loginAcount[0].id}`)
   );
-  for (i = 0; i < listCart.length; i++) {
-    sum += listCart[i].price * listCart[i].count;
+  if (listCart != null) {
+    for (i = 0; i < listCart.length; i++) {
+      sum += listCart[i].price * listCart[i].count;
+    }
   }
+
   return sum;
 }
 console.log(caculateTotal());
@@ -88,7 +91,8 @@ let listCart = JSON.parse(localStorage.getItem(`listCart${loginAcount[0].id}`));
 // console.log(listCart)
 let cartDetail = document.getElementById("cartDetail");
 function renderCart(list) {
-  let data = `
+  if (checkLogin() == true) {
+    let data = `
     <p id="header">Your Order</p>
     <table id="order_list">
     <tr>
@@ -100,8 +104,9 @@ function renderCart(list) {
         <th>Option</th>
     </tr>
     `;
-  for (i = 0; i < list.length; i++) {
-    data += `
+    if (list != null) {
+      for (i = 0; i < list.length; i++) {
+        data += `
         <tr>
             <td>${i + 1}</td>
             <td>${list[i].name}</td>
@@ -117,8 +122,9 @@ function renderCart(list) {
             </td>
         </tr> 
         `;
-  }
-  data += `
+      }
+    }
+    data += `
     <tr>
         <td colspan=4>Total</td>
         <td>${caculateTotal()}$</td>
@@ -126,7 +132,8 @@ function renderCart(list) {
     </tr>
   </table>
   `;
-  cartDetail.innerHTML = data;
+    cartDetail.innerHTML = data;
+  }
 }
 renderCart(listCart);
 
@@ -137,10 +144,7 @@ function addProduct(i) {
     localStorage.getItem(`listCart${loginAcount[0].id}`)
   );
   listCart[i].count++;
-  localStorage.setItem(
-    `listCart${loginAcount[0].id}`,
-    JSON.stringify(listCart)
-  );
+  localStorage.setItem(`listCart${loginAcount[0].id}`, JSON.stringify(listCart));
   renderCart(listCart);
 }
 
@@ -150,17 +154,11 @@ function reduceProduct(i) {
     localStorage.getItem(`listCart${loginAcount[0].id}`)
   );
   listCart[i].count--;
-  localStorage.setItem(
-    `listCart${loginAcount[0].id}`,
-    JSON.stringify(listCart)
-  );
+  localStorage.setItem(`listCart${loginAcount[0].id}`, JSON.stringify(listCart));
   renderCart(listCart);
   if (listCart[i].count == 0) {
     listCart.splice(i, 1);
-    localStorage.setItem(
-      `listCart${loginAcount[0].id}`,
-      JSON.stringify(listCart)
-    );
+    localStorage.setItem(`listCart${loginAcount[0].id}`, JSON.stringify(listCart));
     renderCart(listCart);
   }
 }
@@ -179,6 +177,20 @@ function deleteProduct(i) {
 }
 
 //TODO Order All
+function getOrder() {
+  let listUser = JSON.parse(localStorage.getItem("listUser"));
+  let ownerCart;
+  for (i = 0; i < localStorage.length; i++) {
+    ownerCart = localStorage.key(i);
+    for (j = 0; j < listUser.length; j++) {
+      if (ownerCart == listUser[j].email) {
+        listUser[j].status = "On Processing";
+        localStorage.setItem(`listUser`, JSON.stringify(listUser));
+      }
+    }
+  }
+}
+
 function orderAll() {
   let data = "";
   data += `
@@ -187,7 +199,7 @@ function orderAll() {
             <p>Thank you for your order!</p>
             <p>Your order has been sent to us.</p>
             <p>Your total is: <span> ${caculateTotal()}$</span></p>
-            <p>You can use <span>Paypal</span>  or <span>Bank's account</span> to finish the payment.</p>
+            <p>You can use <span>Paypal</span> or <span>Bank's account</span> to finish the payment.</p>
         </div>
         <div class="invoice__img">
             <img src="/img/payment.png" alt="" />
@@ -196,40 +208,40 @@ function orderAll() {
     </div>
     `;
   cartDetail.innerHTML = data;
-  let listCart = JSON.parse(
+  let payment = JSON.parse(
     localStorage.getItem(`listCart${loginAcount[0].id}`)
   );
-  let controlCart = JSON.parse(localStorage.getItem("controlCart"));
-  if (controlCart == null) {
-    controlCart = [];
-    controlCart.push(listCart);
-    localStorage.setItem(`controlCart`, JSON.stringify(controlCart));
-  } else {
-    let controlCart = JSON.parse(localStorage.getItem("controlCart"));
-    let flag = false;
-    for (i = 0; i < controlCart.length; i++) {
-      if (JSON.stringify(controlCart[0]) !=JSON.stringify(listCart)) {
-        flag = true;
-        console.log(flag);
-        break
-      }
-    }
-    if (flag == true) {
-      controlCart.push(listCart);
-      localStorage.setItem(`controlCart`, JSON.stringify(controlCart));
-    }
+  if (payment != null) {
+    localStorage.removeItem(`listCart${loginAcount[0].id}`);
+    localStorage.setItem(`${loginAcount[0].email}`, JSON.stringify(payment));
+    getOrder();
   }
+  // if (controlCart == null) {
+  //   controlCart = [];
+  //   controlCart.push(listCart);
+  //   localStorage.setItem(`controlCart`, JSON.stringify(controlCart));
+  // } else {
+  //   let controlCart = JSON.parse(localStorage.getItem("controlCart"));
+  //   let flag = false;
+  //   for (i = 0; i < controlCart.length; i++) {
+  //     if (JSON.stringify(controlCart[0]) != JSON.stringify(listCart)) {
+  //       flag = true;
+  //       console.log(flag);
+  //       break
+  //     }
+  //   }
+  //   if (flag == true) {
+  //     controlCart.push(listCart);
+  //     localStorage.setItem(`controlCart`, JSON.stringify(controlCart));
+  //   }
+  // }
 }
 
-let controlCart = JSON.parse(localStorage.getItem("controlCart"));
-console.log(JSON.stringify(controlCart[0])==JSON.stringify(listCart))
 //TODO Show order after press the button
+
 function showAfterOrder() {
-  let controlCart = JSON.parse(localStorage.getItem("controlCart"));
-  let listCart = JSON.parse(
-    localStorage.getItem(`listCart${loginAcount[0].id}`)
-  );
-  if (JSON.stringify(controlCart[0]) == JSON.stringify(listCart)) {
+  let payment = JSON.parse(localStorage.getItem(`${loginAcount[0].email}`));
+  if (payment != null) {
     let data = "";
     data += `
       <div class="invoice">

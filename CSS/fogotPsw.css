@@ -1,80 +1,86 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: url(/img/background.webp);
-    color: whitesmoke;
-    line-height: 2;
-    font-size: 22px;
-
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url(/img/background.webp);
+  color: whitesmoke;
+  line-height: 2;
+  font-size: 22px;
+  background-repeat: no-repeat;
+  background-size: auto;
 }
 .container {
-    width: 30%;
-    height: 470px;
-    margin: auto;
-    padding: auto;
-    margin-top: 80px;
-    background-color: rgb(170,135,142);
-    padding: 15px;
-    font-weight: 500;
-    
+  width: 90%;
+  height: 50%;
+  margin: auto;
+  padding: auto;
+  margin-top: 30%;
+  background-color: rgb(170, 135, 142);
+  padding: 15px;
+  font-weight: 500;
+  font-size: 12px;
 }
 h2 {
-    padding: 0;
-    margin: 0;
-}
-#email {
-    width: 100%;
-    height: 40px;
-    /* outline: none; */
-}
-#question {
-    width: 100%;
-    height: 40px;
-}
-.passwordContent {
-    position: absolute;
-    top: 22%;
-    width: 28%;
-    display: none;
-}
-#nPassword {
-    width: 100%;
-    height: 40px;
-}
-#cfNPassword{
-    width: 100%;
-    height: 40px;
+  padding: 0;
+  margin: 0;
 }
 a {
-    text-decoration: none;
-    color: black;
-}
-.btn {
-    /* margin: auto; */
-    display: flex;
-    justify-content: space-between;
-    /* margin-top: 10px; */
-    margin-top: 35px;
+  text-decoration: none;
+  color: black;
 }
 button {
-    width: 40%;
-    font-size: 18px;
-    margin-left: 130px;
-    height: 40px;
-    font-family: 'Poppins', sans-serif;
-
+  width: 40%;
+  font-family: "Poppins", sans-serif;
 }
 span {
-    font-size: 15px;
+  font-size: 15px;
 }
-.forgotPsw a{
-    color: white;
-    font-size: 15px;
+#email {
+  width: 100%;
+  height: 40px;
+  /* outline: none; */
+}
+#question {
+  width: 100%;
+  height: 40px;
+}
+.passwordContent {
+  /* top: 22%; */
+  width: 100%;
+  display: none;
+}
+#nPassword {
+  width: 100%;
+  height: 40px;
+}
+#cfNPassword {
+  width: 100%;
+  height: 40px;
+}
+.btn {
+  /* margin: auto; */
+  display: flex;
+  justify-content: space-between;
+  /* margin-top: 10px; */
+  margin-top: 35px;
+}
+
+.forgotPsw a {
+  color: white;
+  font-size: 15px;
 }
 .forgotPsw a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+@media screen and (min-width: 960px) {
+  .container {
+      width: 30%;
+      margin-top: 10%;
+      font-size: 22px;
+      line-height: 2;
+  }
+
 }

@@ -9,6 +9,7 @@ function showUserList() {
   if (menuUser.style.display == "none") {
     menuUser.style.display = "block";
     menuProduct.style.display = "none";
+    menuOder.style.display = "none";
     renderUser(userList);
   } else {
     menuUser.style.display = "none";
@@ -23,6 +24,7 @@ function showProductList() {
   if (menuProduct.style.display == "none") {
     menuProduct.style.display = "block";
     menuUser.style.display = "none";
+    menuOder.style.display = "none";
     renderProduct(listProduct);
     localStorage.removeItem("searchData");
   } else {
@@ -30,6 +32,21 @@ function showProductList() {
   }
 }
 productDiv.addEventListener("click", showProductList);
+
+//TODO Show cart
+
+let orderDiv = document.getElementById("orderDiv");
+let menuOder = document.getElementById("menuOder");
+function showCart() {
+  if (menuOder.style.display == "none") {
+    menuOder.style.display = "block";
+    menuProduct.style.display = "none";
+    menuUser.style.display = "none";
+  } else {
+    menuOder.style.display = "none";
+  }
+}
+orderDiv.addEventListener("click", showCart);
 
 //TODO Render User List
 function renderUser(list) {
@@ -136,7 +153,7 @@ function addProduct() {
       price: parseInt(priceCreate.value),
       cata: catagory.value,
       id: listProduct.length,
-      count: 1
+      count: 1,
     };
     listProduct.push(product);
     localStorage.setItem("listProduct", JSON.stringify(listProduct));
@@ -152,7 +169,7 @@ function addProduct() {
       price: parseInt(priceCreate.value),
       cata: catagory.value,
       id: listProduct.length,
-      count: 1
+      count: 1,
     };
     listProduct.push(product);
     localStorage.setItem("listProduct", JSON.stringify(listProduct));
@@ -268,9 +285,133 @@ function searchUser() {
 searchBtn.addEventListener("click", searchUser);
 
 let logOutBtn = document.getElementById("logOutBtn");
-logOutBtn.addEventListener("click",()=>{
+logOutBtn.addEventListener("click", () => {
   window.location = "../page/login_control.html";
-})
+});
 
-//TODO Show cart
+let cartProduct;
+function getOrder() {
+  let listOrder = [];
+  let listUser = JSON.parse(localStorage.getItem("listUser"));
+  let ownerCart;
+  for (i = 0; i < localStorage.length; i++) {
+    ownerCart = localStorage.key(i);
+    for (j = 0; j < listUser.length; j++) {
+      if (ownerCart == listUser[j].email) {
+        cartProduct = JSON.parse(localStorage.getItem(ownerCart));
+        listOrder.push(cartProduct);
+      }
+    }
+  }
+  localStorage.setItem("listOrder", JSON.stringify(listOrder));
+}
+window.addEventListener("load", getOrder);
+function getOrderOwner() {
+  let listOwner = [];
+  let listUser = JSON.parse(localStorage.getItem("listUser"));
+  let ownerCart;
+  for (i = 0; i < localStorage.length; i++) {
+    ownerCart = localStorage.key(i);
+    for (j = 0; j < listUser.length; j++) {
+      if (ownerCart == listUser[j].email) {
+        listOwner.push(listUser[j]);
+        break;
+      }
+    }
+  }
+  localStorage.setItem("listOderOwner", JSON.stringify(listOwner));
+}
+window.addEventListener("load", getOrderOwner);
 
+// function caculateTotal () {
+//   for(i=0;i<listOrder.length; i++) {
+//     for(j=0;j<listOrder[i].length;j++)
+//     console.log(listOrder[i].length)
+//   }
+// }
+// caculateTotal()
+
+let listOwner = JSON.parse(localStorage.getItem("listOderOwner"));
+let listOrder = JSON.parse(localStorage.getItem("listOrder"));
+//TODO Render Cart
+function renderOrder(listOwner, listOrder) {
+  let data = `
+  <table>
+    <tr>
+        <th>No.</th>
+        <th>Action</th>
+        <th>Status</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+        
+    </tr>
+  `;
+  for (i = 0; i < listOwner.length; i++) {
+    data += `
+    <tr>
+        <td rowspan="${listOrder[i].length}">${i + 1}</td>
+        <td rowspan="${listOrder[i].length}">
+        <button onclick="acceptOrder(${i})">Accept</button>
+        <button onclick="finishOrder(${i})">Finish</button></td>
+        </td>
+        <td rowspan="${listOrder[i].length}">${listOwner[i].status}</td>
+        <td rowspan="${listOrder[i].length}">${listOwner[i].email}</td>`;
+    for (k = 0; k < listOrder[i].length; k++) {
+      data += `
+        <td>${listOrder[i][k].name}</td>
+        <td>${listOrder[i][k].count}</td>
+        <td>${listOrder[i][k].price}$</td>
+        <td>${listOrder[i][k].price * listOrder[i][k].count}$</td>
+      </tr>
+    `;
+    }
+  }
+  data += `
+  </table>
+  `;
+  menuOder.innerHTML = data;
+}
+renderOrder(listOwner, listOrder);
+
+function acceptOrder(i) {
+  listOwner[i].status = "On Shipping";
+  localStorage.setItem("listOderOwner", JSON.stringify(listOwner));
+  renderOrder(listOwner, listOrder);
+}
+
+function finishOrder(i) {
+  if (listOwner[i].status == "On Shipping") {
+    let listOwner = JSON.parse(localStorage.getItem("listOderOwner"));
+    let ownerCart;
+    for (j = 0; j < localStorage.length; j++) {
+      ownerCart = localStorage.key(j);
+      if (ownerCart == listOwner[i].email) {
+        localStorage.removeItem(`${ownerCart}`);
+        break;
+      }
+    }
+    listOwner.splice(i, 1);
+    localStorage.setItem("listOderOwner", JSON.stringify(listOwner));
+    listOrder.splice(i, 1);
+    localStorage.setItem("listOrder", JSON.stringify(listOrder));
+    renderOrder(listOwner, listOrder);
+  } else {
+    alert("You have to process the order(s) first")
+  }
+}
+// let cartOwner;
+// let owner;
+// for (i = 0; i < localStorage.length; i++) {
+//   x = localStorage.key(i);
+//   for (j = 0; j < userList.length; j++) {
+//     if (x == userList[j].email) {
+//       owner = x;
+//       cartOwner = JSON.parse(localStorage.getItem(`${x}`));
+//     }
+//   }
+// }
+// console.log(cartOwner);
+// console.log(owner);

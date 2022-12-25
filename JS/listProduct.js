@@ -62,3 +62,11 @@
     
 // ]
 // localStorage.setItem("listProduct",JSON.stringify(listProduct))
+
+
+let array = [[2,3,5],[5,6,7]]
+for(i=0;i<array.length;i++) {
+    for(j=0;j<array[i].length;j++) {
+        console.log(array[i][j])
+    }
+}

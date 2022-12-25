@@ -1,182 +1,189 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: rgb(0, 0, 0);
-    line-height: 1.5;
-    font-size: 22px;
-    width: 100%;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: rgb(0, 0, 0);
+  line-height: 1.5;
+  font-size: 10px;
 }
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 button {
-    background-color: #f1eba7;
-    color: rgb(0, 0, 0);
-    width: 80px;
-    height: 30px;
-    font-size: 15px;
-    border-color: #f9f3af;
-    margin-top: 25px;
+  background-color: #f1eba7;
+  color: rgb(0, 0, 0);
+  border-color: #f9f3af;
+  font-size: 12px;
 }
-#control__navBar {
-    display: flex;
-    gap: 30px;
-    padding: 10px;
-    width: 100%;
-    background-color: #689872;
-    color: white;
-    font-weight: 500;
-    
-}
-.navBar--title {
-    /* width: 50%; */
-    margin-left: 30px;
-}
-.navBar--homepage a{
-    color: white;
-}
-.navBar--log {
-    width: 20%;
-    display: flex;
-    gap: 20px;
-    margin-left: 700px;
-}
-.navBar--log p{
-    font-size: 20px;
-}
-.navBar--log p {
-    padding-top: 5px;
-    /* height: 50px; */
-}
-#menuBar{
-    display: block;
-    width: 14%;
-    background-color: #bbe0c4;
-    padding: 10px;
-    font-weight: 600;
-    line-height: 3;
-    float: left;
-}
-
-#menuBar p {
-    padding: 10px;
-    color: rgb(104, 102, 102);
-
-}
-#menuBar div:hover{
-    background-color: #80ba8e;
-    /* color: white; */
-
-}
-.menuContent {
-    width: 60%;
-    margin-left: 230px;
-
-}
-.menu__search input{
-    margin-left: 20px;
-    height: 30px;
-    width: 50%;
-}
-.menu__product {
-    /* display: none; */
-    width: 100%;
-    clear: none;
-    
-}
-.menu__product table {
-    padding: 10px;
-    width: 85%;
-    margin-left: 25px;
+table {
     border: 1px solid #22482b;
-    margin-top: 20px;
     border-collapse: collapse;
-
 }
-
-.menu__product table tr th {
-    color: rgb(170,135,142);
+table button {
+    margin-top: 10px;
+    width: 100%;
+}
+table tr th {
+    color: rgb(170, 135, 142);
     font-weight: 500;
-    font-size: 17px;
+    font-size: 13px;
     border: 1px solid #22482b;
-    padding: 5px;
-    
-}
-.menu__product table tr td {
-    font-size: 18px;
-    padding: 10px;
+    padding: 2px;
+  }
+  table tr td {
+    font-size: 12px;
+    padding: 2px;
     text-align: center;
     border: 1px solid #22482b;
     width: 40px;
+  }
+#control__navBar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #689872;
+  color: white;
+  font-weight: 600;
+  width: 100%;
 }
-.menu__product img {
-    width: 100%;
-    padding: 0;
+.navBar--homepage a {
+  color: white;
 }
-.menu__user {
-    display: none;
-    width: 100%;
-    clear: none;
-    
+#logOutBtn {
+  font-size: 10px;
+  margin-top: 10px;
 }
-.menu__user table {
-    padding: 10px;
-    width: 80%;
-    /* margin-left: 200px */
-    border: 1px solid #22482b;
-    border-collapse: collapse;
-    margin-top: 20px;
-
+.menuBar {
+  width: 100%;
+  background-color: #bbe0c4;
+  font-weight: 600;
+  line-height: 1.5;
+  display: flex;
+  justify-content: space-around;
 }
-
-.menu__user table tr th {
-    color: rgb(170,135,142);
-    font-weight: 500;
-    font-size: 17px;
-    border: 1px solid #22482b;
-    padding: 5px;
-    
+#menuBar p {
+  color: rgb(104, 102, 102);
+  margin: 0;
+  padding: 3%;
 }
-.menu__user table tr td {
-    font-size: 15px;
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #22482b;
-
+#menuBar div:hover {
+  background-color: #80ba8e;
 }
 .menuCreate {
-    width: 30%;
-    left: 1200px;
-    position: absolute;
-    top: 140px;
+  width: 100%;
 }
-#creatDiv {
-    position: fixed;
-
-}
-.create--container{
-    display: flex;
-    margin-top: 20px;
+.create--container {
+  display: flex;
+  gap: 2%;
+  margin: 2%;
 }
 .menu__create p {
-    font-size: 18px;
+  font-size: 12px;
 }
-.create--input{
-    margin-top: 10px;
-    margin-left: 10px;
-    width: 100%;
+.create--input {
+  width: 100%;
 }
 .create--input input {
-    width: 80%;
-    height: 30px;
-    margin-bottom: 10px;
-
+  width: 100%;
+  margin-bottom: 10px;
 }
 .creat--btn {
-    margin-left: 140px;
+  margin-left: 40%;
+}
+
+.menuContent {
+  width: 100%;
+}
+.menu__search {
+  display: none;
+}
+.menu__product {
+  width: 100%;
+}
+.menu__product table {
+  width: 95%;
+  margin: 3%;
+}
+
+.menu__product img {
+  width: 100%;
+}
+.menu__user {
+  display: none;
+  width: 100%;
+}
+.menu__user table {
+  width: 98%;
+  margin: 1%;
+}
+
+.menu__order {
+  display: none;
+  width: 100%;
+}
+.menu__order table {
+  width: 98%;
+  margin: 1%;
+}
+
+@media screen and (min-width: 960px) {
+    table {
+        font-size: 20px;
+    }
+  #control__navBar {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  #logOutBtn {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .menuBar {
+    width: 20%;
+    height: 60%;
+    display: block;
+    background-color: #bbe0c4;
+    font-weight: 600;
+    line-height: 3;
+    font-size: 20px;
+    padding: 1%;
+    float: left;
+  }
+  .menuCreate {
+    width: 25%;
+    position: fixed;
+    top: 15%;
+    left: 75%;
+  }
+  .menu__search {
+    width: 55%;
+    display: flex;
+    margin-left: 20%;
+  }
+  .menu__search input {
+    width: 80%;
+    margin: 1%;
+  }
+  .menu__search button {
+    width: 15%;
+    margin: 1%;
+  }
+  .menu__product {
+    width: 55%;
+    margin-left: 19%;
+  }
+  .menu__user {
+    width: 54%;
+    margin-left: 20%;
+  }
+  .menu__order {
+    width: 54%;
+    margin-left: 20%;
+  }
 }

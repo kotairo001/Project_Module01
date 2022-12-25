@@ -193,15 +193,22 @@ account.addEventListener("click", showAccountMenu);
 var favBtn = document.getElementsByClassName("favBtn");
 function addFavourite(i) {
   let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
-  let listFav = JSON.parse(localStorage.getItem(`listFavourite${loginAcount[0].id}`));
+  let listFav = JSON.parse(
+    localStorage.getItem(`listFav${loginAcount[0].email}`)
+  );
   if (checkLogin() == true && signInBtn.innerHTML == "Log out") {
     if (listFav == null) {
       listAddFav = [];
       listAddFav.push(listOfProduct[i]);
-      localStorage.setItem(`listFavourite${loginAcount[0].id}`, JSON.stringify(listAddFav));
+      localStorage.setItem(
+        `listFav${loginAcount[0].email}`,
+        JSON.stringify(listAddFav)
+      );
       favBtn[i].style.backgroundColor = "rgb(170,135,142)";
     } else {
-      let listFav = JSON.parse(localStorage.getItem(`listFavourite${loginAcount[0].id}`));
+      let listFav = JSON.parse(
+        localStorage.getItem(`listFav${loginAcount[0].email}`)
+      );
       let flag = true;
       for (j = 0; j < listFav.length; j++) {
         if (listFav[j].id == listOfProduct[i].id) {
@@ -212,18 +219,26 @@ function addFavourite(i) {
         }
       }
       if (flag == false) {
-        localStorage.setItem(`listFavourite${loginAcount[0].id}`, JSON.stringify(listFav));
+        localStorage.setItem(
+          `listFav${loginAcount[0].email}`,
+          JSON.stringify(listFav)
+        );
         favBtn[i].style.backgroundColor = "rgb(213, 169, 179)";
       } else {
         listFav.push(listOfProduct[i]);
-        localStorage.setItem(`listFavourite${loginAcount[0].id}`, JSON.stringify(listFav));
+        localStorage.setItem(
+          `listFav${loginAcount[0].email}`,
+          JSON.stringify(listFav)
+        );
         favBtn[i].style.backgroundColor = "rgb(170,135,142)";
       }
     }
-    let lastFavList = JSON.parse(localStorage.getItem(`listFavourite${loginAcount[0].id}`));
+    let lastFavList = JSON.parse(
+      localStorage.getItem(`listFav${loginAcount[0].email}`)
+    );
     // console.log(lastFavList);
     if (lastFavList.length == 0) {
-      localStorage.removeItem(`listFavourite${loginAcount[0].id}`);
+      localStorage.removeItem(`listFav${loginAcount[0].email}`);
     }
   } else {
     alert("You haven't login yet!");
@@ -234,34 +249,58 @@ function addFavourite(i) {
 let total = 0;
 function addCart(i) {
   let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
-  let listCart = JSON.parse(localStorage.getItem(`listCart${loginAcount[0].id}`));
+  let ownerCart;
+  let orderedList;
+  for (j = 0; j < localStorage.length; j++) {
+    ownerCart = localStorage.key(j);
+    if (ownerCart == loginAcount[0].email) {
+      orderedList = JSON.parse(localStorage.getItem(`${ownerCart}`));
+      break;
+    }
+  }
+  let listCart = JSON.parse(
+    localStorage.getItem(`listCart${loginAcount[0].id}`)
+  );
   if (checkLogin() == true && signInBtn.innerHTML == "Log out") {
-    if (listCart == null) {
-      listCart = [];
-      listCart.push(listOfProduct[i]);
-      localStorage.setItem(
-        `listCart${loginAcount[0].id}`,
-        JSON.stringify(listCart)
-      );
-      alert("You have add " + ++total + " product(s) to cart");
-    } else {
-      let flag = true;
-      for (j = 0; j < listCart.length; j++) {
-        if (listCart[j].id == listOfProduct[i].id) {
-          flag = false;
-          // count++;
-          listCart[j].count++;
-          break;
-        }
-      }
-      if (flag == false) {
-        localStorage.setItem(`listCart${loginAcount[0].id}`, JSON.stringify(listCart));
+    if (orderedList == null) {
+      if (listCart == null) {
+        listCart = [];
+        listCart.push(listOfProduct[i]);
+        localStorage.setItem(
+          `listCart${loginAcount[0].id}`,
+          JSON.stringify(listCart)
+        );
         alert("You have add " + ++total + " product(s) to cart");
       } else {
-        listCart.push(listOfProduct[i]);
-        localStorage.setItem(`listCart${loginAcount[0].id}`, JSON.stringify(listCart));
-        alert("You have add " + ++total + " product(s) to cart");
+        let flag = true;
+        for (j = 0; j < listCart.length; j++) {
+          if (listCart[j].id == listOfProduct[i].id) {
+            flag = false;
+            // count++;
+            listCart[j].count++;
+            break;
+          }
+        }
+        if (flag == false) {
+          localStorage.setItem(
+            `listCart${loginAcount[0].id}`,
+            JSON.stringify(listCart)
+          );
+          alert("You have add " + ++total + " product(s) to cart");
+        } else {
+          listCart.push(listOfProduct[i]);
+          localStorage.setItem(
+            `listCart${loginAcount[0].id}`,
+            JSON.stringify(listCart)
+          );
+          alert("You have add " + ++total + " product(s) to cart");
+        }
       }
+    } else {
+      alert(
+        "You have already order just now."
+        + " Please wait at least 1 day to take more order. "
+      );
     }
   } else {
     alert("You haven't login yet!");
