@@ -1,7 +1,7 @@
 let containerDiv = document.getElementById("container");
 function renderPage() {
   let data = "";
-  data +=`
+  data += `
     <h2>Login</h2>
     <label for="email">Email:</label><br>
         <input type="email" name="email" id="email" required><br>
@@ -19,11 +19,11 @@ function renderPage() {
         <button id="registerBtn">Register</button>
     </div>
     `;
-    containerDiv.innerHTML=data;
+  containerDiv.innerHTML = data;
 }
-renderPage()
+renderPage();
 let password = document.getElementById("password");
-let passwordCheckbox = document.getElementById("showedPassword")
+let passwordCheckbox = document.getElementById("showedPassword");
 function showPassword() {
   if (password.type === "password") {
     password.type = "text";
@@ -31,7 +31,7 @@ function showPassword() {
     password.type = "password";
   }
 }
-passwordCheckbox.addEventListener("click",showPassword)
+passwordCheckbox.addEventListener("click", showPassword);
 
 var email = document.getElementById("email");
 var message = document.getElementById("alert");
@@ -50,12 +50,13 @@ function checkEmail() {
     message.style.fontSize = 13 + "px";
   }
 }
-email.addEventListener("keyup",checkEmail)
+email.addEventListener("keyup", checkEmail);
 
 //new LoginAccount(email.value, password.value, true)
-let loginBtn = document.getElementById("loginBtn")
+let loginBtn = document.getElementById("loginBtn");
 function checkLogin() {
   let flag = false;
+  let check = false;
   let storage = JSON.parse(localStorage.getItem("listUser"));
   if (storage != null) {
     for (i = 0; i < storage.length; i++) {
@@ -64,20 +65,29 @@ function checkLogin() {
         password.value == storage[i].password
       ) {
         flag = true;
-        arrLoginAccount = [];
-        let loginaccount = {
-          email: email.value,
-          password: password.value,
-          status: true,
-          id:storage[i].id
-        };
-        arrLoginAccount.push(loginaccount);
-        localStorage.setItem("loginAcount", JSON.stringify(arrLoginAccount));
-        window.location = "/index.html";
-        break;
-      } 
+        if (
+          storage[i].permission == "Active" ||
+          storage[i].permission == "active"
+        ) {
+          check = true;
+          arrLoginAccount = [];
+          let loginaccount = {
+            email: email.value,
+            password: password.value,
+            status: true,
+            id: storage[i].id,
+          };
+          arrLoginAccount.push(loginaccount);
+          localStorage.setItem("loginAcount", JSON.stringify(arrLoginAccount));
+          window.location = "/index.html";
+          break;
+        }
+      }
     }
-    if(flag == false) {
+    if(check == false) {
+      alert ("Your account has been banned. Please contact admin for detail")
+    }
+    if (flag == false) {
       warnMessage.innerHTML = "Your email or password is wrong";
       warnMessage.style.color = "red";
       warnMessage.style.fontSize = 15 + "px";
@@ -86,10 +96,10 @@ function checkLogin() {
     alert("You don't have account yet. Please sign up");
     window.location = "../page/Register.html";
   }
-};
-loginBtn.addEventListener("click",checkLogin);
+}
+loginBtn.addEventListener("click", checkLogin);
 
 let registerBtn = document.getElementById("registerBtn");
-registerBtn.addEventListener("click",()=>{
-    window.location = "../page/Register.html";
-})
+registerBtn.addEventListener("click", () => {
+  window.location = "../page/Register.html";
+});

@@ -138,8 +138,6 @@ signInBtn.addEventListener("click", () => {
       }
     }
     window.location.href = "index.html";
-    // localStorage.removeItem("listFavourite");
-    // localStorage.removeItem("listCart");
   }
 });
 
@@ -187,7 +185,6 @@ function showAccountMenu() {
     accountMenu.style.display = "none";
   }
 }
-// showAccountMenu();
 account.addEventListener("click", showAccountMenu);
 
 var favBtn = document.getElementsByClassName("favBtn");
@@ -236,7 +233,6 @@ function addFavourite(i) {
     let lastFavList = JSON.parse(
       localStorage.getItem(`listFav${loginAcount[0].email}`)
     );
-    // console.log(lastFavList);
     if (lastFavList.length == 0) {
       localStorage.removeItem(`listFav${loginAcount[0].email}`);
     }
@@ -244,6 +240,20 @@ function addFavourite(i) {
     alert("You haven't login yet!");
   }
 }
+
+//TODO ShowFavourite on loading page
+function showFavourite() {
+  if (checkLogin() == true) {
+    let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
+    let favList = JSON.parse(
+      localStorage.getItem(`listFav${loginAcount[0].email}`)
+    );
+    for (i = 0; i < favList.length; i++) {
+      favBtn[favList[i].id].style.backgroundColor = "rgb(170,135,142)";
+    }
+  }
+}
+window.addEventListener("load", showFavourite);
 
 //TODO Cart
 let total = 0;
@@ -298,8 +308,8 @@ function addCart(i) {
       }
     } else {
       alert(
-        "You have already order just now."
-        + " Please wait at least 1 day to take more order. "
+        "You have already order just now." +
+          " Please wait at least 1 day to take more order. "
       );
     }
   } else {

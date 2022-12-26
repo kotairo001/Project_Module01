@@ -1,7 +1,7 @@
 let containerDiv = document.getElementById("container");
 function renderPage() {
   let data = "";
-  data +=`
+  data += `
     <h2>Login For Administrator</h2>
     <label for="email">Email:</label><br>
         <input type="email" name="email" id="email" required><br>
@@ -17,11 +17,11 @@ function renderPage() {
         <button id="loginBtn">Login</button>
     </div>
     `;
-    containerDiv.innerHTML=data;
+  containerDiv.innerHTML = data;
 }
-renderPage()
+renderPage();
 let password = document.getElementById("password");
-let passwordCheckbox = document.getElementById("showedPassword")
+let passwordCheckbox = document.getElementById("showedPassword");
 function showPassword() {
   if (password.type === "password") {
     password.type = "text";
@@ -29,19 +29,19 @@ function showPassword() {
     password.type = "password";
   }
 }
-passwordCheckbox.addEventListener("click",showPassword)
+passwordCheckbox.addEventListener("click", showPassword);
 
-function addAdminAccount () {
+function addAdminAccount() {
   let adminAccount = {
     email: "admin@gmail.com",
     password: 1234567,
-    status: true,
+    status: false,
   };
   let listAdmin = [];
   listAdmin.push(adminAccount);
-  localStorage.setItem("adminAccount",JSON.stringify(listAdmin));
+  localStorage.setItem("adminAccount", JSON.stringify(listAdmin));
 }
-window.addAdminAccount("load",addAdminAccount)
+addAdminAccount();
 
 let email = document.getElementById("email");
 let message = document.getElementById("alert");
@@ -59,21 +59,23 @@ function checkEmail() {
     message.style.fontSize = 13 + "px";
   }
 }
-email.addEventListener("keyup",checkEmail)
+email.addEventListener("keyup", checkEmail);
 
-let loginBtn = document.getElementById("loginBtn")
+let loginBtn = document.getElementById("loginBtn");
 function checkLogin() {
   let adminAccount = JSON.parse(localStorage.getItem("adminAccount"));
-  console.log(adminAccount[0].email)
-      if (
-        email.value == adminAccount[0].email &&
-        password.value == adminAccount[0].password
-      ) {
-        window.location.href = "../page/control.html";
-      } else {
-        warnMessage.innerHTML = "Your email or password is wrong";
-        warnMessage.style.color = "red";
-        warnMessage.style.fontSize = 15 + "px";
-      }
-};
-loginBtn.addEventListener("click",checkLogin);
+  console.log(adminAccount[0].email);
+  if (
+    email.value == adminAccount[0].email &&
+    password.value == adminAccount[0].password
+  ) {
+    adminAccount[0].status = true;
+    localStorage.setItem("adminAccount", JSON.stringify(adminAccount));
+    window.location.href = "../page/control.html";
+  } else {
+    warnMessage.innerHTML = "Your email or password is wrong";
+    warnMessage.style.color = "red";
+    warnMessage.style.fontSize = 15 + "px";
+  }
+}
+loginBtn.addEventListener("click", checkLogin);
