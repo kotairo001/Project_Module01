@@ -61,7 +61,8 @@ function checkLogin() {
   let admin = JSON.parse(localStorage.getItem("adminAccount"));
   if (admin != null) {
     if (email.value == admin[0].email && password.value == admin[0].password) {
-      window.location = "../page/control.html";
+      admin[0].status = true;
+      localStorage.setItem("adminAccount", JSON.stringify(admin));
     } else if (storage != null) {
     for (i = 0; i < storage.length; i++) {
       if (

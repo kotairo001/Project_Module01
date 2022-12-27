@@ -9,3 +9,6 @@ function addAdminAccount() {
   localStorage.setItem("adminAccount", JSON.stringify(listAdmin));
 }
 addAdminAccount();
+
+
+
