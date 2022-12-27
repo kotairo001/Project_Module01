@@ -1,6 +1,31 @@
 let signInBtn = document.getElementById("signInBtn");
 let signUpBtn = document.getElementById("signUpBtn");
 
+signInBtn.addEventListener("click", () => {
+  if (signInBtn.innerHTML == "Log out") {
+    let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
+    if (loginAcount != null) {
+      for (let i = 0; i < loginAcount.length; i++) {
+        if (loginAcount[i].status == true) {
+          signInBtn.innerHTML = "Sign in";
+          loginAcount[i].status = false;
+          localStorage.setItem("loginAcount", JSON.stringify(loginAcount));
+        }
+      }
+    }
+    window.location.href = "/index.html";
+  }
+});
+
+signUpBtn.addEventListener("click", function () {
+  window.location.href = "../page/Register.html";
+});
+
+signInBtn.addEventListener("click", () => {
+  if (signInBtn.innerHTML == "Sign in") {
+    window.location.href = "../page/Login.html";
+  }
+});
 function checkLogin() {
   let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
   let flag = false;
@@ -40,32 +65,6 @@ function showAccount() {
 }
 showAccount();
 window.addEventListener("load", showAccount);
-
-signInBtn.addEventListener("click", () => {
-  if (signInBtn.innerHTML == "Log out") {
-    let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
-    if (loginAcount != null) {
-      for (let i = 0; i < loginAcount.length; i++) {
-        if (loginAcount[i].status == true) {
-          signInBtn.innerHTML = "Sign in";
-          loginAcount[i].status = false;
-          localStorage.setItem("loginAcount", JSON.stringify(loginAcount));
-        }
-      }
-    }
-    window.location.href = "/index.html";
-  }
-});
-
-signUpBtn.addEventListener("click", function () {
-  window.location.href = "../page/Register.html";
-});
-
-signInBtn.addEventListener("click", () => {
-  if (signInBtn.innerHTML == "Sign in") {
-    window.location.href = "../page/Login.html";
-  }
-});
 
 let menuButton = document.getElementById("menuBtn");
 let menuList = document.getElementById("menuList");

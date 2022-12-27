@@ -3,6 +3,31 @@ var signInBtn = document.getElementById("signInBtn");
 var signUpBtn = document.getElementById("signUpBtn");
 let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
 
+signUpBtn.addEventListener("click", function () {
+  window.location.href = "../page/Register.html";
+});
+
+signInBtn.addEventListener("click", () => {
+  if (signInBtn.innerHTML == "Sign in") {
+    window.location.href = "../page/Login.html";
+  }
+});
+signInBtn.addEventListener("click", () => {
+  if (signInBtn.innerHTML == "Log out") {
+    let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
+    if (loginAcount != null) {
+      for (let i = 0; i < loginAcount.length; i++) {
+        if (loginAcount[i].status == true) {
+          signInBtn.innerHTML = "Sign in";
+          loginAcount[i].status = false;
+          localStorage.setItem("loginAcount", JSON.stringify(loginAcount));
+        }
+      }
+    }
+    window.location.href = "/index.html";
+  }
+});
+
 function checkLogin() {
   let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
   let flag = false;
@@ -28,7 +53,6 @@ function keepLogin() {
 window.addEventListener("load", keepLogin);
 
 let account = document.getElementById("account");
-
 function showAccount() {
   let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
   if (checkLogin() == true && signInBtn.innerHTML == "Log out") {
@@ -44,32 +68,8 @@ function showAccount() {
 showAccount();
 window.addEventListener("load", showAccount);
 
-signInBtn.addEventListener("click", () => {
-  if (signInBtn.innerHTML == "Log out") {
-    let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
-    if (loginAcount != null) {
-      for (let i = 0; i < loginAcount.length; i++) {
-        if (loginAcount[i].status == true) {
-          signInBtn.innerHTML = "Sign in";
-          loginAcount[i].status = false;
-          localStorage.setItem("loginAcount", JSON.stringify(loginAcount));
-        }
-      }
-    }
-    window.location.href = "/index.html";
-  }
-});
 
-signUpBtn.addEventListener("click", function () {
-  window.location.href = "../page/Register.html";
-});
-
-signInBtn.addEventListener("click", () => {
-  if (signInBtn.innerHTML == "Sign in") {
-    window.location.href = "../page/Login.html";
-  }
-});
-
+let menuList = document.getElementById("menuList");
 menuButton.addEventListener("click", function () {
   if (menuList.style.display === "none") {
     menuList.style.display = "block";
