@@ -430,8 +430,8 @@ logInBtn.addEventListener("click", () => {
     admin[0].status = false;
     localStorage.setItem("adminAccount", JSON.stringify(admin));
     logInBtn.innerHTML = "Log In";
-    window.location = "../page/login_control.html";
+    window.location = "../page/login.html";
   } else if (logInBtn.innerHTML == "Log In") {
-    window.location = "../page/login_control.html";
+    window.location = "../page/login.html";
   }
 });

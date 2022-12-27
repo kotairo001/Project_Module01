@@ -17,7 +17,6 @@ function renderPage() {
     <div class="btn">
         <button id="loginBtn">Login</button>
         <button id="registerBtn">Register</button>
-        <button id="adminBtn">To Admin</button>
     </div>
     `;
   containerDiv.innerHTML = data;
@@ -59,7 +58,11 @@ function checkLogin() {
   let flag = false;
   let check = false;
   let storage = JSON.parse(localStorage.getItem("listUser"));
-  if (storage != null) {
+  let admin = JSON.parse(localStorage.getItem("adminAccount"));
+  if (admin != null) {
+    if (email.value == admin[0].email && password.value == admin[0].password) {
+      window.location = "../page/control.html";
+    } else if (storage != null) {
     for (i = 0; i < storage.length; i++) {
       if (
         email.value == storage[i].email &&
@@ -98,7 +101,7 @@ function checkLogin() {
     alert("You don't have account yet. Please sign up");
     window.location = "../page/Register.html";
   }
-}
+}}
 loginBtn.addEventListener("click", checkLogin);
 
 let registerBtn = document.getElementById("registerBtn");
@@ -106,7 +109,3 @@ registerBtn.addEventListener("click", () => {
   window.location = "../page/Register.html";
 });
 
-let adminBtn = document.getElementById("adminBtn");
-adminBtn.addEventListener("click", () => {
-  window.location.href = "../page/login_control.html";
-});
