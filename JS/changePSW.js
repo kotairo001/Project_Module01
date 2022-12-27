@@ -147,6 +147,7 @@ function checkUser() {
       ) {
         listUser[i].password = password.value;
         localStorage.setItem("listUser",JSON.stringify(listUser))
+        alert ("Your password has been changed")
         window.location = "../page/Login.html"
       } else {
         alertCfMessage.innerHTML = "Your email or password is wrong";
