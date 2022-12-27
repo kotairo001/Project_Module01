@@ -80,6 +80,7 @@ function checkLogin() {
           };
           arrLoginAccount.push(loginaccount);
           localStorage.setItem("loginAcount", JSON.stringify(arrLoginAccount));
+          warnMessage.innerHTML = "";
           window.location = "/index.html";
           break;
         }
@@ -89,10 +90,9 @@ function checkLogin() {
       warnMessage.innerHTML = "Your email or password is wrong";
       warnMessage.style.color = "red";
       warnMessage.style.fontSize = 15 + "px";
-    } else if(check == false) {
-      alert ("Your account has been banned. Please contact admin for detail")
+    } else if (check == false) {
+      alert("Your account has been banned. Please contact admin for detail");
       warnMessage.innerHTML = "";
-
     }
   } else {
     alert("You don't have account yet. Please sign up");
@@ -107,6 +107,6 @@ registerBtn.addEventListener("click", () => {
 });
 
 let adminBtn = document.getElementById("adminBtn");
-adminBtn.addEventListener("click", ()=>{
-  window.location.href = "../page/login_control.html"
-})
+adminBtn.addEventListener("click", () => {
+  window.location.href = "../page/login_control.html";
+});
