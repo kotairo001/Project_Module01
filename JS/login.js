@@ -99,7 +99,6 @@ function checkLogin() {
     }
   } else {
     alert("You don't have account yet. Please sign up");
-    window.location = "../page/Register.html";
   }
 }}
 loginBtn.addEventListener("click", checkLogin);
