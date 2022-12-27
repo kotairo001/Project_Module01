@@ -17,6 +17,7 @@ function renderPage() {
     <div class="btn">
         <button id="loginBtn">Login</button>
         <button id="registerBtn">Register</button>
+        <button id="adminBtn">To Admin</button>
     </div>
     `;
   containerDiv.innerHTML = data;
@@ -104,3 +105,8 @@ let registerBtn = document.getElementById("registerBtn");
 registerBtn.addEventListener("click", () => {
   window.location = "../page/Register.html";
 });
+
+let adminBtn = document.getElementById("adminBtn");
+adminBtn.addEventListener("click", ()=>{
+  window.location.href = "../page/login_control.html"
+})

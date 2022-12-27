@@ -3,7 +3,6 @@ let logInBtn = document.getElementById("logInBtn");
 if (admin[0].status == true) {
   logInBtn.innerHTML = "Log Out";
   let userList = JSON.parse(localStorage.getItem("listUser"));
-  // let data = "";
 
   //TODO Show User
   let menuUser = document.getElementById("menuUser");
@@ -54,6 +53,7 @@ if (admin[0].status == true) {
 
   //TODO Render User List
   function renderUser(list) {
+    if(list!=null) {
     let data = `
     <table>
     <tr>
@@ -83,7 +83,7 @@ if (admin[0].status == true) {
     }
     data += "</table>";
 
-    menuUser.innerHTML = data;
+    menuUser.innerHTML = data;}
   }
   renderUser(userList);
 
@@ -293,6 +293,7 @@ if (admin[0].status == true) {
     let listOrder = [];
     let listUser = JSON.parse(localStorage.getItem("listUser"));
     let ownerCart;
+    if(listUser!=null) {
     for (i = 0; i < localStorage.length; i++) {
       ownerCart = localStorage.key(i);
       for (j = 0; j < listUser.length; j++) {
@@ -302,13 +303,14 @@ if (admin[0].status == true) {
         }
       }
     }
-    localStorage.setItem("listOrder", JSON.stringify(listOrder));
+    localStorage.setItem("listOrder", JSON.stringify(listOrder));}
   }
   window.addEventListener("load", getOrder);
   function getOrderOwner() {
     let listOwner = [];
     let listUser = JSON.parse(localStorage.getItem("listUser"));
     let ownerCart;
+    if(listUser!=null) {
     for (i = 0; i < localStorage.length; i++) {
       ownerCart = localStorage.key(i);
       for (j = 0; j < listUser.length; j++) {
@@ -318,7 +320,7 @@ if (admin[0].status == true) {
         }
       }
     }
-    localStorage.setItem("listOderOwner", JSON.stringify(listOwner));
+    localStorage.setItem("listOderOwner", JSON.stringify(listOwner));}
   }
   window.addEventListener("load", getOrderOwner);
 
@@ -334,6 +336,7 @@ if (admin[0].status == true) {
   let listOrder = JSON.parse(localStorage.getItem("listOrder"));
   //TODO Render Cart
   function renderOrder(listOwner, listOrder) {
+    if(listOwner!=null && listOrder!=null) {
     let data = `
   <table>
     <tr>
@@ -371,7 +374,7 @@ if (admin[0].status == true) {
     data += `
   </table>
   `;
-    menuOder.innerHTML = data;
+    menuOder.innerHTML = data;}
   }
   renderOrder(listOwner, listOrder);
 

@@ -1,3 +1,80 @@
+let signUpBtn = document.getElementById("signUpBtn");
+let signInBtn = document.getElementById("signInBtn");
+signUpBtn.addEventListener("click", function () {
+  window.location.href = "./page/Register.html";
+});
+
+signInBtn.addEventListener("click", () => {
+  if (signInBtn.innerHTML == "Sign in") {
+    window.location.href = "./page/Login.html";
+  }
+});
+function checkLogin() {
+  let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
+  let flag = false;
+  if (loginAcount == null) {
+    flag = false;
+  } else {
+    for (i = 0; i < loginAcount.length; i++) {
+      if (loginAcount[i].status == true) {
+        flag = true;
+      }
+    }
+  }
+  return flag;
+}
+
+function keepLogin() {
+  if (checkLogin() == true) {
+    signInBtn.innerHTML = "Log out";
+  }
+}
+let menuBtn = document.getElementById("menuBtn");
+let menuList = document.getElementById("menuList");
+function showMenuList() {
+  if (menuList.style.display == "none") {
+    menuList.style.display = "block";
+  } else {
+    menuList.style.display = "none";
+  }
+}
+menuBtn.addEventListener("click", showMenuList);
+
+function logIn() {
+  let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
+  if (loginAcount != null) {
+    for (let i = 0; i < loginAcount.length; i++) {
+      if (loginAcount[i].status == true) {
+        signInBtn.innerHTML = "Log out";
+        // loginAcount[i].status = false;
+        localStorage.setItem("loginAcount", JSON.stringify(loginAcount));
+      } else {
+        signInBtn.innerHTML = "Sign in";
+      }
+    }
+  } else {
+    signInBtn.innerHTML = "Sign in";
+  }
+}
+logIn();
+
+signInBtn.addEventListener("click", () => {
+  if (signInBtn.innerHTML == "Log out") {
+    let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
+    if (loginAcount != null) {
+      for (let i = 0; i < loginAcount.length; i++) {
+        if (loginAcount[i].status == true) {
+          signInBtn.innerHTML = "Sign in";
+          loginAcount[i].status = false;
+          localStorage.setItem("loginAcount", JSON.stringify(loginAcount));
+        }
+      }
+    }
+    window.location.href = "index.html";
+  }
+});
+
+window.addEventListener("load", keepLogin);
 let listOfProduct = JSON.parse(localStorage.getItem("listProduct"));
 let containerDiv = document.getElementById("content__top");
 function renderListProduct(list) {
@@ -65,87 +142,6 @@ function closePopup() {
   }
 }
 
-function checkLogin() {
-  let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
-  let flag = false;
-  if (loginAcount == null) {
-    flag = false;
-  } else {
-    for (i = 0; i < loginAcount.length; i++) {
-      if (loginAcount[i].status == true) {
-        flag = true;
-      }
-    }
-  }
-  return flag;
-}
-
-function keepLogin() {
-  if (checkLogin() == true) {
-    signInBtn.innerHTML = "Log out";
-  }
-}
-window.addEventListener("load", keepLogin);
-
-let menuBtn = document.getElementById("menuBtn");
-let menuList = document.getElementById("menuList");
-function showMenuList() {
-  if (menuList.style.display == "none") {
-    menuList.style.display = "block";
-  } else {
-    menuList.style.display = "none";
-  }
-}
-menuBtn.addEventListener("click", showMenuList);
-
-let signInBtn = document.getElementById("signInBtn");
-function logIn() {
-  let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
-  if (loginAcount != null) {
-    for (let i = 0; i < loginAcount.length; i++) {
-      if (loginAcount[i].status == true) {
-        signInBtn.innerHTML = "Log out";
-        // loginAcount[i].status = false;
-        localStorage.setItem("loginAcount", JSON.stringify(loginAcount));
-      } else {
-        signInBtn.innerHTML = "Sign in";
-      }
-    }
-  } else {
-    signInBtn.innerHTML = "Sign in";
-  }
-}
-logIn();
-
-signInBtn.addEventListener("click", () => {
-  console.log("111");
-
-  if (signInBtn.innerHTML == "Sign in") {
-    window.location.href = "./page/Login.html";
-  }
-});
-
-signInBtn.addEventListener("click", () => {
-  if (signInBtn.innerHTML == "Log out") {
-    let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
-    if (loginAcount != null) {
-      for (let i = 0; i < loginAcount.length; i++) {
-        if (loginAcount[i].status == true) {
-          signInBtn.innerHTML = "Sign in";
-          loginAcount[i].status = false;
-          localStorage.setItem("loginAcount", JSON.stringify(loginAcount));
-        }
-      }
-    }
-    window.location.href = "index.html";
-  }
-});
-
-let signUpBtn = document.getElementById("signUpBtn");
-signUpBtn.addEventListener("click", function () {
-  window.location.href = "./page/Register.html";
-});
-
 // let mainPhoto = document.getElementById("mainPhoto");
 // function slideImage() {
 //   let arrayImage = [
@@ -190,10 +186,11 @@ account.addEventListener("click", showAccountMenu);
 var favBtn = document.getElementsByClassName("favBtn");
 function addFavourite(i) {
   let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
-  let listFav = JSON.parse(
-    localStorage.getItem(`listFav${loginAcount[0].email}`)
-  );
+
   if (checkLogin() == true && signInBtn.innerHTML == "Log out") {
+    let listFav = JSON.parse(
+      localStorage.getItem(`listFav${loginAcount[0].email}`)
+    );
     if (listFav == null) {
       listAddFav = [];
       listAddFav.push(listOfProduct[i]);
@@ -261,17 +258,18 @@ function addCart(i) {
   let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
   let ownerCart;
   let orderedList;
+  if(loginAcount!=null) {
   for (j = 0; j < localStorage.length; j++) {
     ownerCart = localStorage.key(j);
     if (ownerCart == loginAcount[0].email) {
       orderedList = JSON.parse(localStorage.getItem(`${ownerCart}`));
       break;
     }
-  }
-  let listCart = JSON.parse(
-    localStorage.getItem(`listCart${loginAcount[0].id}`)
-  );
+  }}
   if (checkLogin() == true && signInBtn.innerHTML == "Log out") {
+    let listCart = JSON.parse(
+      localStorage.getItem(`listCart${loginAcount[0].id}`)
+    );
     if (orderedList == null) {
       if (listCart == null) {
         listCart = [];
