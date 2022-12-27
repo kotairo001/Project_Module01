@@ -82,6 +82,7 @@ function confirmPassword() {
 }
 cfpassword.addEventListener("keyup", confirmPassword);
 
+
 let btn = document.getElementById("summit");
 let security = document.getElementById("security");
 function checkAll() {
@@ -93,7 +94,8 @@ function checkAll() {
     validatePassword() == true &&
     validateEmail() == true &&
     email.value != "" &&
-    password.value != ""
+    password.value != "" &&
+    security.value != ""
   ) {
     listUser = [];
     let obj = {
@@ -101,7 +103,7 @@ function checkAll() {
       password: password.value,
       security: security.value,
       status: false,
-      permission: "active",
+      permission: "Active",
       id: listUser.length,
     };
     listUser.push(obj);
@@ -113,7 +115,8 @@ function checkAll() {
     validatePassword() == true &&
     validateEmail() == true &&
     email.value != "" &&
-    password.value != ""
+    password.value != "" &&
+    security.value != ""
   ) {
     listUser = JSON.parse(listUser);
     let obj = {
@@ -121,7 +124,7 @@ function checkAll() {
       password: password.value,
       security: security.value,
       status: false,
-      permission: "active",
+      permission: "Active",
       id: listUser.length,
     };
     for (let i = 0; i < listUser.length; i++) {
@@ -136,7 +139,7 @@ function checkAll() {
         password: password.value,
         security: security.value,
         status: false,
-        permission: "active",
+        permission: "Active",
         id: listUser.length,
       };
       listUser.push(obj);

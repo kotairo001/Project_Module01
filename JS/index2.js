@@ -59,6 +59,12 @@ signUpBtn.addEventListener("click", function () {
   window.location.href = "../page/Register.html";
 });
 
+signInBtn.addEventListener("click", () => {
+  if (signInBtn.innerHTML == "Sign in") {
+    window.location.href = "../page/Login.html";
+  }
+});
+
 let menuButton = document.getElementById("menuBtn");
 let menuList = document.getElementById("menuList");
 menuButton.addEventListener("click", function () {
@@ -68,6 +74,25 @@ menuButton.addEventListener("click", function () {
     menuList.style.display = "none";
   }
 });
+
+
+function logIn() {
+  let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
+  if (loginAcount != null) {
+    for (let i = 0; i < loginAcount.length; i++) {
+      if (loginAcount[i].status == true) {
+        signInBtn.innerHTML = "Log out";
+        // loginAcount[i].status = false;
+        localStorage.setItem("loginAcount", JSON.stringify(loginAcount));
+      } else {
+        signInBtn.innerHTML = "Sign in";
+      }
+    }
+  } else {
+    signInBtn.innerHTML = "Sign in";
+  }
+}
+logIn();
 
 //TODO Caculate total
 let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));

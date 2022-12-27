@@ -161,6 +161,9 @@ table tr th {
     top: 15%;
     left: 75%;
   }
+  #creatDiv {
+    display: none;
+  }
   .menu__search {
     width: 55%;
     display: flex;

@@ -2,6 +2,7 @@ var menuButton = document.getElementById("menuBtn");
 var signInBtn = document.getElementById("signInBtn");
 var signUpBtn = document.getElementById("signUpBtn");
 let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
+
 function checkLogin() {
   let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
   let flag = false;
@@ -25,6 +26,7 @@ function keepLogin() {
 window.addEventListener("load", keepLogin);
 
 let account = document.getElementById("account");
+
 function showAccount() {
   let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
   if (checkLogin() == true && signInBtn.innerHTML == "Log out") {
@@ -59,6 +61,13 @@ signInBtn.addEventListener("click", () => {
 signUpBtn.addEventListener("click", function () {
   window.location.href = "../page/Register.html";
 });
+
+signInBtn.addEventListener("click", () => {
+  if (signInBtn.innerHTML == "Sign in") {
+    window.location.href = "../page/Login.html";
+  }
+});
+
 menuButton.addEventListener("click", function () {
   if (menuList.style.display === "none") {
     menuList.style.display = "block";
@@ -66,6 +75,25 @@ menuButton.addEventListener("click", function () {
     menuList.style.display = "none";
   }
 });
+
+
+function logIn() {
+  let loginAcount = JSON.parse(localStorage.getItem("loginAcount"));
+  if (loginAcount != null) {
+    for (let i = 0; i < loginAcount.length; i++) {
+      if (loginAcount[i].status == true) {
+        signInBtn.innerHTML = "Log out";
+        // loginAcount[i].status = false;
+        localStorage.setItem("loginAcount", JSON.stringify(loginAcount));
+      } else {
+        signInBtn.innerHTML = "Sign in";
+      }
+    }
+  } else {
+    signInBtn.innerHTML = "Sign in";
+  }
+}
+logIn();
 
 let favContainer = document.getElementById("favouriteContainer");
 let favList = JSON.parse(

@@ -1,5 +1,6 @@
 let admin = JSON.parse(localStorage.getItem("adminAccount"));
 let logInBtn = document.getElementById("logInBtn");
+let creatDiv = document.getElementById("creatDiv")
 if (admin[0].status == true) {
   logInBtn.innerHTML = "Log Out";
   let userList = JSON.parse(localStorage.getItem("listUser"));
@@ -12,9 +13,11 @@ if (admin[0].status == true) {
     if (menuUser.style.display == "none") {
       menuUser.style.display = "block";
       menuProduct.style.display = "none";
+      creatDiv.style.display = "none"
       menuOder.style.display = "none";
       renderUser(userList);
-    } else {
+    } 
+    else {
       menuUser.style.display = "none";
     }
   }
@@ -26,12 +29,14 @@ if (admin[0].status == true) {
   function showProductList() {
     if (menuProduct.style.display == "none") {
       menuProduct.style.display = "block";
+      creatDiv.style.display = "block"
       menuUser.style.display = "none";
       menuOder.style.display = "none";
       renderProduct(listProduct);
       localStorage.removeItem("searchData");
     } else {
       menuProduct.style.display = "none";
+      creatDiv.style.display = "none"
     }
   }
   productDiv.addEventListener("click", showProductList);
@@ -43,6 +48,7 @@ if (admin[0].status == true) {
   function showCart() {
     if (menuOder.style.display == "none") {
       menuOder.style.display = "block";
+      creatDiv.style.display = "none"
       menuProduct.style.display = "none";
       menuUser.style.display = "none";
     } else {
