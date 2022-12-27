@@ -21,6 +21,8 @@ function checkLogin() {
 function keepLogin() {
   if (checkLogin() == true) {
     signInBtn.innerHTML = "Log out";
+    signUpBtn.style.display = "none"
+
   }
 }
 window.addEventListener("load", keepLogin);
