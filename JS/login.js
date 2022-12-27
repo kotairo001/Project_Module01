@@ -84,13 +84,14 @@ function checkLogin() {
         }
       }
     }
-    if(check == false) {
-      alert ("Your account has been banned. Please contact admin for detail")
-    }
     if (flag == false) {
       warnMessage.innerHTML = "Your email or password is wrong";
       warnMessage.style.color = "red";
       warnMessage.style.fontSize = 15 + "px";
+    } else if(check == false) {
+      alert ("Your account has been banned. Please contact admin for detail")
+      warnMessage.innerHTML = "";
+
     }
   } else {
     alert("You don't have account yet. Please sign up");

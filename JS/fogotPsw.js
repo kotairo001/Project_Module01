@@ -6,9 +6,9 @@ function renderPage() {
   <div class="checkContent" id="checkContent">
     <label for="email">Email:</label><br />
     <input type="email" name="email" id="email" required /><br />
-    <div id="alert"></div>
     <label for="question">What your favourite pet?</label><br />
     <input type="text" name="question" id="question" required />
+    <div id="alert"></div>
     <div class="btn">
       <button id="checkBtn">Check</button>
     </div>
@@ -140,10 +140,8 @@ function comparePsw() {
   let flag = false;
   if (nPassword.value == cfNPassword.value) {
     flag = true;
-    warnMessage = "";
+    warnMessage.innerHTML = "";
   } else {
-    cfNPassword.focus();
-    flag = false;
     warnMessage.innerHTML = "Your password has to be the same";
     warnMessage.style.color = "red";
     warnMessage.style.fontSize = 15 + "px";
