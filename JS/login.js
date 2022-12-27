@@ -63,6 +63,7 @@ function checkLogin() {
     if (email.value == admin[0].email && password.value == admin[0].password) {
       admin[0].status = true;
       localStorage.setItem("adminAccount", JSON.stringify(admin));
+      window.location.href = "../page/control.html";
     } else if (storage != null) {
     for (i = 0; i < storage.length; i++) {
       if (
